@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Detail - 김세인 디자인 포트폴리오</title>
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+        @font-face {
+            font-family: 'LCT-Ciburial-Regular';
+            src: url('fonts/LCT-Ciburial-Regular.otf') format('opentype');
+            font-weight: 400;
+            unicode-range: U+0020-007E;
+        }
+
+        :root {
+            --primary-red: #E11227;
+            --bg-dark: #101620;
+            --text-gray: #a2a2a2;
+            --light-gray: #f2f2f2;
+        }
+
+        body {
+            font-family: 'LCT-Ciburial-Regular', 'Pretendard', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #49261D;
+            color: #fff;
+        }
+
+        /* 상단 헤더 영역 */
+        .detail-header {
+            padding: 60px 10% 40px;
+            background-color: #49261D;
+            position: sticky;
+            /* 스크롤 시 상단 고정 (선택 사항) */
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 15px;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--primary-red);
+        }
+
+        .detail-header h1 {
+            font-size: 2rem;
+            margin: 0;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        /* 갤러리 컨테이너 */
+        .gallery-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px 0 100px;
+        }
+
+        /* 프로젝트 정보 텍스트 블록 */
+        .project-info {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 60px;
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #fff;
+        }
+
+        .info-row {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .info-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-label {
+            width: 120px;
+            font-weight: 600;
+            color: #e0e0e0;
+            flex-shrink: 0;
+        }
+
+        .info-value {
+            color: #ccc;
+        }
+
+        .gallery-section {
+            margin-bottom: 80px;
+        }
+
+        .gallery-title {
+            font-size: 1rem;
+            font-weight: normal;
+            color: #e0e0e0;
+            text-align: center;
+            margin-bottom: 30px;
+            text-transform: capitalize;
+        }
+
+        .gallery-grid {
+            display: grid;
+            gap: 10px;
+        }
+
+        .gallery-grid.col-1 {
+            grid-template-columns: 1fr;
+        }
+
+        .gallery-grid.col-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid.col-2 {
+                grid-template-columns: 1fr;
+            }
+            .info-row {
+                flex-direction: column;
+                margin-bottom: 20px;
+            }
+            .info-label {
+                margin-bottom: 5px;
+            }
+        }
+
+        .image-item {
+            width: 100%;
+            line-height: 0;
+        }
+
+        .image-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.3s;
+        }
+
+        .image-item img:hover {
+            opacity: 0.95;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            /* 16:9 비율 */
+            height: 0;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 라이트박스 (이미지 확대) */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1000;
+            transition: opacity 0.3s ease;
+            cursor: zoom-out;
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox.active img {
+            transform: scale(1);
+        }
+
+        /* 푸터 영역 */
+        footer {
+            background-color: var(--bg-dark);
+            color: #fff;
+            padding: 80px 10%;
+            text-align: center;
+        }
+
+        .btn-list {
+            display: inline-block;
+            padding: 15px 40px;
+            border: 1px solid #fff;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-list:hover {
+            background-color: #fff;
+            color: var(--bg-dark);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="detail-header">
+        <a href="main page.html" class="back-link">← Back to Overview</a>
+        <h1>Hope : The last towel on earth</h1>
+    </div>
+
+    <div class="gallery-container">
+        
+        <!-- 프로젝트 상세 정보 -->
+        <div class="project-info">
+            <div class="info-row">
+                <div class="info-label">행사명</div>
+                <div class="info-value">송월타월 영화제</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">일시</div>
+                <div class="info-value">2022 3월 1일</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">주요내용</div>
+                <div class="info-value">만약 황폐화된 지구에 마지막 남은 희망을 송월타올이 지킬 수 있다면? 이라는 상상에서 출발한 애니메이션입니다.<br>송월타올이 지구를 살릴 희망을 준 것처럼 많은 이들이 욕실에서 만족감을 얻고, 희망을 가지는 순간을 송월타월과 함께 하길 바라는 마음으로 제작했습니다.</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">기여도</div>
+                <div class="info-value">100%, 스토리보드/핸드드로잉/애니메이팅</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">작업기간</div>
+                <div class="info-value">약 30일 소요</div>
+            </div>
+        </div>
+
+        <!-- Character Design -->
+        <div class="gallery-section">
+            <h2 class="gallery-title">Character Design</h2>
+            <div class="gallery-grid col-1">
+                <div class="image-item"><img src="images/hope_1.jpg" alt="Character Design 1"></div>
+                <div class="image-item"><img src="images/hope_2.jpg" alt="Character Design 2"></div>
+            </div>
+        </div>
+
+        <!-- Frames -->
+        <div class="gallery-section">
+            <h2 class="gallery-title">still cut
+            </h2>
+            <div class="gallery-grid col-2">
+                <div class="image-item"><img src="images/hope_3.jpg" alt="Frame 1"></div>
+                <div class="image-item"><img src="images/hope_4.jpg" alt="Frame 2"></div>
+                <div class="image-item"><img src="images/hope_5.jpg" alt="Frame 3"></div>
+                <div class="image-item"><img src="images/hope_6.jpg" alt="Frame 4"></div>
+                <div class="image-item"><img src="images/hope_7.jpg" alt="Frame 5"></div>
+                <div class="image-item"><img src="images/hope_8.jpg" alt="Frame 6"></div>
+            </div>
+        </div>
+
+        <!-- Story Board -->
+        <div class="gallery-section">
+            <h2 class="gallery-title">Story Board</h2>
+            <div class="gallery-grid col-2">
+                <div class="image-item"><img src="images/hope_9.png" alt="Story Board 1"></div>
+                <div class="image-item"><img src="images/hope_10.png" alt="Story Board 2"></div>
+                <div class="image-item"><img src="images/hope_11.png" alt="Story Board 3"></div>
+                <div class="image-item"><img src="images/hope_12.png" alt="Story Board 4"></div>
+            </div>
+        </div>
+
+        <!-- Video -->
+        <div class="gallery-section">
+            <h2 class="gallery-title">Video</h2>
+            <div class="video-container">
+                <iframe src="https://player.vimeo.com/video/713117032?title=0&byline=0&portrait=0" frameborder="0"
+                    allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Thank you for watching.</p>
+        <br>
+        <a href="main page.html" class="btn-list">목록으로 돌아가기</a>
+    </footer>
+
+    <!-- 라이트박스 -->
+    <div class="lightbox" id="lightbox">
+        <img src="" alt="Expanded Image">
+    </div>
+
+    <script>
+        const images = document.querySelectorAll('.image-item img');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = lightbox.querySelector('img');
+
+        images.forEach(img => {
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightbox.classList.add('active');
+            });
+        });
+
+        // 배경이나 이미지를 클릭하면 닫힘
+        lightbox.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+        });
+    </script>
+</body>
+
+</html>
