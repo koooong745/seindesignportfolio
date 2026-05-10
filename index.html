@@ -174,7 +174,7 @@
     <header>
         <h1>Kim Sein Portfolio</h1>
         <div class="contact-info">
-            Brand Experience | Packaging | Animation
+            Brand experience | Packaging | Animation
         </div>
     </header>
 
@@ -192,7 +192,7 @@
                 </a>
 
                 <a href="SIDE ENOUGH detail.html" class="project-item">
-                    <video src="images/thumb_side.mp4" autoplay loop muted playsinline class="project-thumb"></video>
+                    <video id="thumb-video" src="images/thumb_side.mp4" autoplay loop muted playsinline class="project-thumb"></video>
                     <div class="project-title">SIDE ENOUGH</div>
                 </a>
 
@@ -216,11 +216,27 @@
 
     <footer class="site-footer">
         <p class="footer-tagline">Visual storytelling for Brand</p>
-        <p class="footer-contact">koooong745@gmail.com<br>+01 4930 1082</p>
+        <p class="footer-contact">koooong745@gmail.com<br>010.4930.1082</p>
         <p class="footer-copy">©seindesign 2026. All rights reserved</p>
         <span class="footer-name">KIM SE IN</span>
     </footer>
 
 </body>
+
+<script>
+    // 모바일 포함 모든 환경에서 비디오 자동재생 강제 실행
+    document.addEventListener('DOMContentLoaded', function() {
+        var video = document.getElementById('thumb-video');
+        if (video) {
+            video.muted = true;
+            video.play().catch(function() {});
+        }
+    });
+    // iOS Safari 터치 후 재생 보장
+    document.addEventListener('touchstart', function() {
+        var video = document.getElementById('thumb-video');
+        if (video && video.paused) { video.play().catch(function(){}); }
+    }, { once: true });
+</script>
 
 </html>
