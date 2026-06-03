@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>김세인 디자인 포트폴리오</title>
+    <title>Kim Sein Portfolio</title>
     <meta property="og:title" content="Kim Sein Portfolio">
     <meta property="og:description" content="Brand experience | Packaging | Animation">
     <meta property="og:image" content="https://koooong745.github.io/seindesignportfolio/images/OG.jpg">
@@ -12,127 +12,342 @@
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://koooong745.github.io/seindesignportfolio/images/OG.jpg">
-    <style>
-        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
+    <style>
+        /* ===== FONTS ===== */
         @font-face {
-            font-family: 'LCT-Ciburial-Regular';
+            font-family: 'SUITE';
+            src: url('fonts/SUITE-Light.otf') format('opentype');
+            font-weight: 300;
+        }
+        @font-face {
+            font-family: 'SUITE';
+            src: url('fonts/SUITE-Regular.otf') format('opentype');
+            font-weight: 400;
+        }
+        @font-face {
+            font-family: 'SUITE';
+            src: url('fonts/SUITE-Medium.otf') format('opentype');
+            font-weight: 500;
+        }
+        @font-face {
+            font-family: 'SUITE';
+            src: url('fonts/SUITE-SemiBold.otf') format('opentype');
+            font-weight: 600;
+        }
+        @font-face {
+            font-family: 'SUITE';
+            src: url('fonts/SUITE-Bold.otf') format('opentype');
+            font-weight: 700;
+        }
+        @font-face {
+            font-family: 'SUITE';
+            src: url('fonts/SUITE-ExtraBold.otf') format('opentype');
+            font-weight: 800;
+        }
+        @font-face {
+            font-family: 'SUITE';
+            src: url('fonts/SUITE-Heavy.otf') format('opentype');
+            font-weight: 900;
+        }
+        @font-face {
+            font-family: 'LCT';
             src: url('fonts/LCT-Ciburial-Regular.otf') format('opentype');
             font-weight: 400;
             unicode-range: U+0020-007E;
         }
 
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none;
+        }
+
         :root {
-            --primary-red: #E11227;
-            --text-gray: #595959;
-            --light-gray: #f2f2f2;
+            --black: #0f0f0f;
             --white: #ffffff;
+            --gray: #888;
+            --light-border: rgba(0, 0, 0, 0.1);
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'LCT-Ciburial-Regular', 'Pretendard', sans-serif;
-            margin: 0;
-            padding: 0;
+            font-family: 'SUITE', sans-serif;
             background-color: var(--white);
-            color: var(--bg-dark);
-            line-height: 1.6;
+            color: var(--black);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        header {
-            background-color: var(--white);
-            color: var(--bg-dark);
-            padding: 60px 0;
-            width: 90%;
-            max-width: 1600px;
-            margin: 0 auto;
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ===== CUSTOM CURSOR ===== */
+        .cursor-dot {
+            position: fixed;
+            width: 7px;
+            height: 7px;
+            background: var(--black);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 99999;
+            top: 0; left: 0;
+            transform: translate(-50%, -50%);
+            transition: width 0.25s ease, height 0.25s ease, background 0.25s ease;
+            will-change: transform;
+        }
+
+        .cursor-ring {
+            position: fixed;
+            width: 38px;
+            height: 38px;
+            border: 1.5px solid var(--black);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 99998;
+            top: 0; left: 0;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                        height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                        border-color 0.25s ease;
+            will-change: transform;
+        }
+
+        body.cursor-hover .cursor-dot {
+            width: 5px;
+            height: 5px;
+        }
+
+        body.cursor-hover .cursor-ring {
+            width: 60px;
+            height: 60px;
+        }
+
+        /* ===== HEADER ===== */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            padding: 28px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            mix-blend-mode: difference;
         }
 
-        header h1 {
+        .header-logo {
+            font-family: 'LCT', sans-serif;
             font-size: 1rem;
-            margin: 0;
-            color: var(--bg-dark);
+            font-weight: 400;
+            color: var(--white);
+            letter-spacing: 0.02em;
+            transition: opacity 0.3s;
         }
 
-        .contact-info {
-            font-size: 1rem;
-            color: var(--text-gray);
-            text-align: right;
+        .header-logo:hover {
+            opacity: 0.6;
         }
 
-        .container {
-            width: 90%;
-            max-width: 1600px;
-            margin: 0 auto;
-            padding: 50px 0 100px;
-        }
-
-        .section-title {
-            font-size: 1.5rem;
-            border-bottom: 3px solid var(--bg-dark);
-            padding-bottom: 5px;
-            margin-bottom: 30px;
+        .header-nav {
             display: flex;
+            gap: 28px;
             align-items: center;
-            justify-content: space-between;
         }
 
-        .section-title span {
-            font-size: 1rem;
-            color: var(--text-gray);
-            font-weight: normal;
+        .header-nav a {
+            font-family: 'SUITE', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 400;
+            color: var(--white);
+            letter-spacing: 0.01em;
+            transition: opacity 0.3s;
         }
 
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px 20px;
+        .header-nav a:hover {
+            opacity: 0.5;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 0 5% 10vh;
+        }
+
+        .hero-text-wrap {
+            max-width: 1400px;
+            overflow: hidden;
+        }
+
+        .hero-text {
+            font-family: 'SUITE', sans-serif;
+            font-size: clamp(1.75rem, 3.2vw, 4rem);
+            font-weight: 500;
+            line-height: 1.3;
+            letter-spacing: -0.025em;
+            color: var(--black);
+        }
+
+        .hero-line {
+            display: block;
+            overflow: hidden;
+        }
+
+        .hero-line-inner {
+            display: block;
+            transform: translateY(105%);
+            animation: lineReveal 1s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+        }
+
+        .hero-line:nth-child(1) .hero-line-inner { animation-delay: 0.1s; }
+        .hero-line:nth-child(2) .hero-line-inner { animation-delay: 0.22s; }
+        .hero-line:nth-child(3) .hero-line-inner { animation-delay: 0.34s; }
+
+        @keyframes lineReveal {
+            to { transform: translateY(0); }
+        }
+
+        .hero-sub {
+            margin-top: 40px;
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: var(--gray);
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 0.7s forwards;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== PROJECTS SECTION ===== */
+        .projects-section {
+            padding: 0 5% 140px;
+        }
+
+        .section-line {
+            width: 100%;
+            height: 1px;
+            background: var(--light-border);
             margin-bottom: 80px;
         }
 
-        .project-item {
-            text-decoration: none;
-            color: inherit;
+        /* --- Featured (full-width) projects --- */
+        .projects-featured {
             display: flex;
             flex-direction: column;
-            cursor: pointer;
+            gap: 0;
+        }
+
+        .project-item {
+            display: block;
+            color: inherit;
+        }
+
+        .project-item.featured {
+            padding-bottom: 80px;
+            border-bottom: 1px solid var(--light-border);
+            margin-bottom: 80px;
+        }
+
+        .project-item.featured:last-child {
+            margin-bottom: 100px;
+        }
+
+        /* Thumb wrapper — clips image for zoom effect */
+        .thumb-wrap {
+            overflow: hidden;
+            border-radius: 4px;
+            width: 100%;
+        }
+
+        .project-item.featured .thumb-wrap {
+            aspect-ratio: 16 / 7;
+        }
+
+        .project-item.grid-item .thumb-wrap {
+            aspect-ratio: 4 / 3;
         }
 
         .project-thumb {
             width: 100%;
-            aspect-ratio: 5/4;
+            height: 100%;
             object-fit: cover;
-            border-radius: 8px;
+            display: block;
+            transform: scale(1.0);
+            transition: transform 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-item:hover .project-thumb {
+            transform: scale(1.05);
+        }
+
+        /* Meta row */
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 18px;
+            transform: translateY(0);
+            transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-item:hover .project-meta {
+            transform: translateY(-5px);
         }
 
         .project-title {
-            margin-top: 15px;
             font-size: 1rem;
-            color: var(--text-gray);
             font-weight: 500;
-            transition: color 0.3s ease;
+            color: var(--black);
+            letter-spacing: -0.01em;
         }
 
-        .project-item:hover .project-title {
-            color: var(--primary-red);
+        .project-index {
+            font-size: 0.78rem;
+            font-weight: 400;
+            color: var(--gray);
+            letter-spacing: 0.05em;
         }
 
-
-        @media (max-width: 1024px) {
-            .project-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        /* --- 2-column grid projects --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px 40px;
         }
 
-        @media (max-width: 768px) {
-            .project-grid {
-                grid-template-columns: 1fr;
-            }
+        /* ===== SCROLL REVEAL ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.85s cubic-bezier(0.4, 0, 0.2, 1),
+                        transform 0.85s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* ===== 통일 푸터 ===== */
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger delay for grid items */
+        .projects-grid .project-item:nth-child(2) { transition-delay: 0.12s; }
+
+        /* ===== FOOTER ===== */
         .site-footer {
             background-color: transparent;
             color: #000;
@@ -173,54 +388,143 @@
             color: #000;
             font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
         }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .hero-text {
+                font-size: clamp(1.5rem, 4vw, 3rem);
+            }
+        }
+
+        @media (max-width: 768px) {
+            * { cursor: auto; }
+            .cursor-dot, .cursor-ring { display: none; }
+
+            .site-header { padding: 20px 5%; }
+
+            .hero { padding: 0 5% 12vh; }
+            .hero-text { font-size: clamp(1.4rem, 5.5vw, 2rem); }
+
+            .projects-section { padding: 0 5% 80px; }
+            .section-line { margin-bottom: 48px; }
+
+            .project-item.featured { padding-bottom: 48px; margin-bottom: 48px; }
+            .project-item.featured .thumb-wrap { aspect-ratio: 3 / 2; }
+            .project-item.featured:last-child { margin-bottom: 60px; }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .footer-name { font-size: 20vw; }
+        }
     </style>
 </head>
 
 <body>
 
-    <header>
-        <h1>Kim Sein Portfolio</h1>
-        <div class="contact-info">
-            Brand experience | Packaging | Animation
-        </div>
+    <!-- Custom cursor -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+
+    <!-- Fixed header -->
+    <header class="site-header">
+        <a href="index.html" class="header-logo">Kim Sein</a>
+        <nav class="header-nav">
+            <a href="https://www.linkedin.com/in/kimseindesigner" target="_blank" rel="noopener">Linkedin</a>
+            <a href="mailto:koooong745@gmail.com">Contact</a>
+        </nav>
     </header>
 
-    <div class="container">
-        <section>
-            <div class="project-grid">
-                <a href="Inbody detail.html" class="project-item">
-                    <img src="images/thumb_inbody.jpg" alt="InBody Thumbnail" class="project-thumb">
-                    <div class="project-title">InBody</div>
-                </a>
+    <!-- Hero section -->
+    <section class="hero">
+        <div class="hero-text-wrap">
+            <p class="hero-text">
+                <span class="hero-line"><span class="hero-line-inner">Kim Sein is a Brand Communication Designer</span></span>
+                <span class="hero-line"><span class="hero-line-inner">who blends brand writing with AI-powered visual direction</span></span>
+                <span class="hero-line"><span class="hero-line-inner">to translate ideas into expressive brand experiences.</span></span>
+            </p>
+        </div>
+        <p class="hero-sub">Scroll to explore</p>
+    </section>
 
-                <a href="PHYTONUTRI detail.html" class="project-item">
-                    <img src="images/thumb_phyto.jpg" alt="PHYTONUTRI Thumbnail" class="project-thumb">
-                    <div class="project-title">PHYTONUTRI</div>
-                </a>
+    <!-- Projects -->
+    <main class="projects-section">
+        <div class="section-line"></div>
 
-                <a href="SIDE ENOUGH detail.html" class="project-item">
-                    <video id="thumb-video" src="images/thumb_side.mp4" autoplay loop muted playsinline class="project-thumb"></video>
-                    <div class="project-title">SIDE ENOUGH</div>
-                </a>
+        <!-- Full-width items: 01, 02, 03 -->
+        <div class="projects-featured">
 
-                <a href="Punggi detail.html" class="project-item">
-                    <img src="images/thumb_punggi.jpg" alt="Project 04 Thumbnail" class="project-thumb">
-                    <div class="project-title">[풍기인견서울페스티벌] Intro Animation</div>
-                </a>
+            <a href="Inbody detail.html" class="project-item featured reveal">
+                <div class="thumb-wrap">
+                    <img src="images/thumb_inbody.jpg" alt="InBody" class="project-thumb">
+                </div>
+                <div class="project-meta">
+                    <span class="project-title">InBody</span>
+                    <span class="project-index">01</span>
+                </div>
+            </a>
 
-                <a href="Hope detail.html" class="project-item">
-                    <img src="images/thumb_hope.jpg" alt="Project 05 Thumbnail" class="project-thumb">
-                    <div class="project-title">Hope : The last towel on earth</div>
-                </a>
+            <a href="PHYTONUTRI detail.html" class="project-item featured reveal">
+                <div class="thumb-wrap">
+                    <img src="images/thumb_phyto.jpg" alt="PHYTONUTRI" class="project-thumb">
+                </div>
+                <div class="project-meta">
+                    <span class="project-title">PHYTONUTRI</span>
+                    <span class="project-index">02</span>
+                </div>
+            </a>
 
-                <a href="Shamp's detail.html" class="project-item">
-                    <img src="images/thumb_Shamp's.png" alt="Project 06 Thumbnail" class="project-thumb">
-                    <div class="project-title">[Shamp's filings] SNS contents</div>
-                </a>
-            </div>
-        </section>
-    </div>
+            <a href="SIDE ENOUGH detail.html" class="project-item featured reveal">
+                <div class="thumb-wrap">
+                    <video src="images/thumb_side.mp4" autoplay loop muted playsinline class="project-thumb"></video>
+                </div>
+                <div class="project-meta">
+                    <span class="project-title">SIDE ENOUGH</span>
+                    <span class="project-index">03</span>
+                </div>
+            </a>
 
+        </div>
+
+        <!-- 2-column items: 04, 05, 06 -->
+        <div class="projects-grid">
+
+            <a href="Punggi detail.html" class="project-item grid-item reveal">
+                <div class="thumb-wrap">
+                    <img src="images/thumb_punggi.jpg" alt="Punggi" class="project-thumb">
+                </div>
+                <div class="project-meta">
+                    <span class="project-title">[풍기인견서울페스티벌] Intro Animation</span>
+                    <span class="project-index">04</span>
+                </div>
+            </a>
+
+            <a href="Hope detail.html" class="project-item grid-item reveal">
+                <div class="thumb-wrap">
+                    <img src="images/thumb_hope.jpg" alt="Hope" class="project-thumb">
+                </div>
+                <div class="project-meta">
+                    <span class="project-title">Hope : The last towel on earth</span>
+                    <span class="project-index">05</span>
+                </div>
+            </a>
+
+            <a href="Shamp's detail.html" class="project-item grid-item reveal">
+                <div class="thumb-wrap">
+                    <img src="images/thumb_Shamp's.png" alt="Shamp's" class="project-thumb">
+                </div>
+                <div class="project-meta">
+                    <span class="project-title">[Shamp's filings] SNS contents</span>
+                    <span class="project-index">06</span>
+                </div>
+            </a>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
     <footer class="site-footer">
         <p class="footer-tagline">Visual storytelling for Brand</p>
         <p class="footer-contact">koooong745@gmail.com<br>010.4930.1082</p>
@@ -228,22 +532,57 @@
         <span class="footer-name">KIM SE IN</span>
     </footer>
 
-</body>
+    <script>
+        /* ===== CUSTOM CURSOR ===== */
+        const dot = document.getElementById('cursor-dot');
+        const ring = document.getElementById('cursor-ring');
+        let mouseX = 0, mouseY = 0;
+        let ringX = 0, ringY = 0;
 
-<script>
-    // 모바일 포함 모든 환경에서 비디오 자동재생 강제 실행
-    document.addEventListener('DOMContentLoaded', function() {
-        var video = document.getElementById('thumb-video');
-        if (video) {
-            video.muted = true;
-            video.play().catch(function() {});
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            dot.style.left = mouseX + 'px';
+            dot.style.top = mouseY + 'px';
+        });
+
+        // Ring follows with lerp (smooth lag)
+        (function animateRing() {
+            ringX += (mouseX - ringX) * 0.1;
+            ringY += (mouseY - ringY) * 0.1;
+            ring.style.left = ringX + 'px';
+            ring.style.top = ringY + 'px';
+            requestAnimationFrame(animateRing);
+        })();
+
+        // Hover state on interactive elements
+        document.querySelectorAll('a, button, video').forEach(el => {
+            el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+            el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+        });
+
+        /* ===== SCROLL REVEAL ===== */
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        /* ===== VIDEO AUTOPLAY (mobile) ===== */
+        const sideVideo = document.querySelector('.project-item video');
+        if (sideVideo) {
+            sideVideo.muted = true;
+            sideVideo.play().catch(() => {});
         }
-    });
-    // iOS Safari 터치 후 재생 보장
-    document.addEventListener('touchstart', function() {
-        var video = document.getElementById('thumb-video');
-        if (video && video.paused) { video.play().catch(function(){}); }
-    }, { once: true });
-</script>
+        document.addEventListener('touchstart', () => {
+            if (sideVideo && sideVideo.paused) sideVideo.play().catch(() => {});
+        }, { once: true });
+    </script>
 
+</body>
 </html>
