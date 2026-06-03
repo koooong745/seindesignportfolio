@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>김세인 디자인 포트폴리오</title>
+    <meta property="og:title" content="Kim Sein Portfolio">
+    <meta property="og:description" content="Brand experience | Packaging | Animation">
+    <meta property="og:image" content="https://koooong745.github.io/seindesignportfolio/images/OG.jpg">
+    <meta property="og:url" content="https://koooong745.github.io/seindesignportfolio/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://koooong745.github.io/seindesignportfolio/images/OG.jpg">
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+        @font-face {
+            font-family: 'LCT-Ciburial-Regular';
+            src: url('fonts/LCT-Ciburial-Regular.otf') format('opentype');
+            font-weight: 400;
+            unicode-range: U+0020-007E;
+        }
+
+        :root {
+            --primary-red: #E11227;
+            --text-gray: #595959;
+            --light-gray: #f2f2f2;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'LCT-Ciburial-Regular', 'Pretendard', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--white);
+            color: var(--bg-dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--white);
+            color: var(--bg-dark);
+            padding: 60px 0;
+            width: 90%;
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 1rem;
+            margin: 0;
+            color: var(--bg-dark);
+        }
+
+        .contact-info {
+            font-size: 1rem;
+            color: var(--text-gray);
+            text-align: right;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 50px 0 100px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            border-bottom: 3px solid var(--bg-dark);
+            padding-bottom: 5px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .section-title span {
+            font-size: 1rem;
+            color: var(--text-gray);
+            font-weight: normal;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px 20px;
+            margin-bottom: 80px;
+        }
+
+        .project-item {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .project-thumb {
+            width: 100%;
+            aspect-ratio: 5/4;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .project-title {
+            margin-top: 15px;
+            font-size: 1rem;
+            color: var(--text-gray);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .project-item:hover .project-title {
+            color: var(--primary-red);
+        }
+
+
+        @media (max-width: 1024px) {
+            .project-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== 통일 푸터 ===== */
+        .site-footer {
+            background-color: transparent;
+            color: #000;
+            padding: 60px 8% 0;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .footer-tagline {
+            font-size: 1rem;
+            font-weight: 700;
+            margin: 0 0 8px 0;
+            line-height: 1.4;
+            color: #000;
+        }
+
+        .footer-contact {
+            font-size: 0.95rem;
+            font-weight: 400;
+            margin: 0 0 32px 0;
+            line-height: 1.7;
+            color: #000;
+        }
+
+        .footer-copy {
+            font-size: 0.72rem;
+            color: #888;
+            margin: 0 0 20px 0;
+            font-weight: 400;
+        }
+
+        .footer-name {
+            display: block;
+            font-size: 17vw;
+            font-weight: 900;
+            line-height: 0.88;
+            letter-spacing: -0.02em;
+            color: #000;
+            font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Kim Sein Portfolio</h1>
+        <div class="contact-info">
+            Brand experience | Packaging | Animation
+        </div>
+    </header>
+
+    <div class="container">
+        <section>
+            <div class="project-grid">
+                <a href="Inbody detail.html" class="project-item">
+                    <img src="images/thumb_inbody.jpg" alt="InBody Thumbnail" class="project-thumb">
+                    <div class="project-title">InBody</div>
+                </a>
+
+                <a href="PHYTONUTRI detail.html" class="project-item">
+                    <img src="images/thumb_phyto.jpg" alt="PHYTONUTRI Thumbnail" class="project-thumb">
+                    <div class="project-title">PHYTONUTRI</div>
+                </a>
+
+                <a href="SIDE ENOUGH detail.html" class="project-item">
+                    <video id="thumb-video" src="images/thumb_side.mp4" autoplay loop muted playsinline class="project-thumb"></video>
+                    <div class="project-title">SIDE ENOUGH</div>
+                </a>
+
+                <a href="Punggi detail.html" class="project-item">
+                    <img src="images/thumb_punggi.jpg" alt="Project 04 Thumbnail" class="project-thumb">
+                    <div class="project-title">[풍기인견서울페스티벌] Intro Animation</div>
+                </a>
+
+                <a href="Hope detail.html" class="project-item">
+                    <img src="images/thumb_hope.jpg" alt="Project 05 Thumbnail" class="project-thumb">
+                    <div class="project-title">Hope : The last towel on earth</div>
+                </a>
+
+                <a href="Shamp's detail.html" class="project-item">
+                    <img src="images/thumb_Shamp's.png" alt="Project 06 Thumbnail" class="project-thumb">
+                    <div class="project-title">[Shamp's filings] SNS contents</div>
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <footer class="site-footer">
+        <p class="footer-tagline">Visual storytelling for Brand</p>
+        <p class="footer-contact">koooong745@gmail.com<br>010.4930.1082</p>
+        <p class="footer-copy">©seindesign 2026. All rights reserved</p>
+        <span class="footer-name">KIM SE IN</span>
+    </footer>
+
+</body>
+
+<script>
+    // 모바일 포함 모든 환경에서 비디오 자동재생 강제 실행
+    document.addEventListener('DOMContentLoaded', function() {
+        var video = document.getElementById('thumb-video');
+        if (video) {
+            video.muted = true;
+            video.play().catch(function() {});
+        }
+    });
+    // iOS Safari 터치 후 재생 보장
+    document.addEventListener('touchstart', function() {
+        var video = document.getElementById('thumb-video');
+        if (video && video.paused) { video.play().catch(function(){}); }
+    }, { once: true });
+</script>
+
+</html>
