@@ -37,7 +37,6 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid var(--light-gray);
         }
 
         .back-link {
@@ -202,22 +201,6 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
         }
 
-        .footer-tagline {
-            font-size: 1rem;
-            font-weight: 700;
-            margin: 0 0 8px 0;
-            line-height: 1.4;
-            color: #000;
-        }
-
-        .footer-contact {
-            font-size: 0.95rem;
-            font-weight: 400;
-            margin: 0 0 32px 0;
-            line-height: 1.7;
-            color: #000;
-        }
-
         .footer-copy {
             font-size: 0.72rem;
             color: #888;
@@ -227,7 +210,7 @@
 
         .footer-name {
             display: block;
-            font-size: 17vw;
+            font-size: clamp(3rem, 16vw, 12rem);
             font-weight: 900;
             line-height: 0.88;
             letter-spacing: -0.02em;
@@ -294,8 +277,6 @@
     </div>
 
             <footer class="site-footer">
-        <p class="footer-tagline">Visual storytelling for Brand</p>
-        <p class="footer-contact">koooong745@gmail.com<br>010.4930.1082</p>
         <p class="footer-copy">©seindesign 2026. All rights reserved</p>
         <span class="footer-name">KIM SE IN</span>
     </footer>
